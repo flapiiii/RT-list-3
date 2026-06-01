@@ -15,7 +15,7 @@
             "Threshold runway 26R, holding point B4 runway 21R, TGE",
             "Enter threshold runway 26R, B4, runway 21R, TGE"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 0
         },
         {
           "id": 2,
@@ -26,7 +26,7 @@
             "Holding point B5, runway 21R, LIE",
             "Holding point A5, runway 21R, LIE"
           ],
-          "correctAnswer": 3
+          "correctAnswer": 0
         },
         {
           "id": 3,
@@ -59,7 +59,7 @@
             "Inbound to runup bay J",
             "Final"
           ],
-          "correctAnswer": 2
+          "correctAnswer": 3
         },
         {
           "id": 6,
@@ -70,7 +70,7 @@
             "Cross undershoot runway 26R and threshold runway 26R, USP",
             "Cross threshold runway 26R, cross undershoot runway 26L, USP"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 0
         },
         {
           "id": 7,
@@ -81,7 +81,7 @@
             "Give way to the Grob, enter undershoot runway 26R, holding point B5, runway 21R, YBU",
             "Enter undershoot runway 26R, holding point B5, runway 21R, YBU"
           ],
-          "correctAnswer": 2
+          "correctAnswer": 0
         },
         {
           "id": 8,
@@ -92,7 +92,7 @@
             "White Cessna",
             "Yellow Grob"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 0
         }
       ]
     },
@@ -110,7 +110,7 @@
             "Follow the traffic, 03R, cleared for take off, YTC",
             "Cleared for take off, YTC"
           ],
-          "correctAnswer": 0
+          "correctAnswer": 1
         },
         {
           "id": 2,
@@ -121,7 +121,7 @@
             "A Cessna",
             "A Tobago"
           ],
-          "correctAnswer": 3
+          "correctAnswer": 2
         },
         {
           "id": 3,
@@ -132,7 +132,7 @@
             "Just airborne",
             "Base"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 2
         },
         {
           "id": 4,
@@ -143,7 +143,7 @@
             "Touch and go",
             "Circuits"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 2
         },
         {
           "id": 5,
@@ -154,7 +154,7 @@
             "Traffic in sight, lining up, TGN",
             "Behind the Cessna, lining up behind, TGN"
           ],
-          "correctAnswer": 3
+          "correctAnswer": 1
         },
         {
           "id": 6,
@@ -165,7 +165,7 @@
             "Runway 21R, lining up, JES",
             "Runway 21R, lining up, keep it rolling, JES"
           ],
-          "correctAnswer": 2
+          "correctAnswer": 1
         },
         {
           "id": 7,
@@ -187,7 +187,7 @@
             "Runway 26L, cleared for takeoff, YTW",
             "Cleared for takeoff, runway 26 left, maintain runway heading, YTW"
           ],
-          "correctAnswer": 0
+          "correctAnswer": 3
         },
         {
           "id": 9,
@@ -198,7 +198,7 @@
             "YTC",
             "YTC, wilco"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 0
         }
       ]
     },
@@ -221,7 +221,7 @@
             "Visual approach, YTC",
             "Traffic in sight, cleared to land, YTC"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 2
         }
       ]
     },
@@ -239,7 +239,7 @@
             "Cleared touch and go, right turn for runway R, right circuits, YTB.",
             "Cleared touch and go, right turn for runway 03R, right circuits, YTB."
           ],
-          "correctAnswer": 1
+          "correctAnswer": 3
         },
         {
           "id": 3,
@@ -279,7 +279,7 @@
             "Cleared visual approach, direct right base, YTW",
             "Direct right base, number 2, YTW"
           ],
-          "correctAnswer": 0
+          "correctAnswer": 2
         },
         {
           "id": 3,
@@ -290,7 +290,7 @@
             "YTI, visual approach",
             "Cleared visual approach, number 2, YTI"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 3
         },
         {
           "id": 5,
@@ -301,7 +301,7 @@
             "Maintain 1500, direct mid downwind runway 21R, YTK",
             "Maintain 1500, downwind runway 21R, YTK"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 0
         },
         {
           "id": 7,
@@ -312,7 +312,7 @@
             "Mid downwind runway 26R, wilco, JVS",
             "Maintain 1500, runway 26R, JVS"
           ],
-          "correctAnswer": 0
+          "correctAnswer": 1
         }
       ]
     },
@@ -330,7 +330,7 @@
             "Report wide left base, TAN",
             "TAN, roger, wide left base."
           ],
-          "correctAnswer": 0
+          "correctAnswer": 2
         },
         {
           "id": 2,
@@ -352,7 +352,7 @@
             "Report ready to turn base, KTB",
             "KTB, ready to turn base"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 2
         },
         {
           "id": 4,
@@ -374,7 +374,7 @@
             "TGX, roger",
             "On taxiway B, TGX"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 3
         },
         {
           "id": 6,
@@ -396,7 +396,7 @@
             "YTB, negative for the training area",
             "YTB, 21 left"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 3
         },
         {
           "id": 8,
@@ -407,7 +407,7 @@
             "YTF, affirm",
             "YTF"
           ],
-          "correctAnswer": 3
+          "correctAnswer": 1
         },
         {
           "id": 9,
@@ -418,7 +418,7 @@
             "YTO, Outer Harbor",
             "YTO, traffic in sight."
           ],
-          "correctAnswer": 2
+          "correctAnswer": 1
         },
         {
           "id": 10,
@@ -429,13 +429,13 @@
             "JAZ, negative traffic in sight",
             "JAZ, dual"
           ],
-          "correctAnswer": 1
+          "correctAnswer": 2
         }
       ]
     }
   ],
   "notes": {
-    "important": "Because this is an aviation listening comprehension test, the correct answers depend entirely on the accompanying audio tracks. Correct answers have been added for all available questions.",
+    "important": "ICAO V2 Multichoice Pre-Solo Listening Test 5 with updated correct answers based on audio verification.",
     "sections3and4": "Sections 3 requires diagram-based visual matching which is not included in this transcription.",
     "audioRequired": "Audio tracks are essential for completing this test accurately."
   }
