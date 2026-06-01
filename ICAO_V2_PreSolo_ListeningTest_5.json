@@ -1,0 +1,407 @@
+{
+  "testName": "ICAO V2 Multichoice Pre-Solo Listening Test 5",
+  "totalMarks": 50,
+  "sections": [
+    {
+      "sectionName": "SECTION ONE: GROUND OPERATIONS",
+      "marks": 6,
+      "questions": [
+        {
+          "id": 1,
+          "question": "TGE has called at the Runup bay J for a flight to the Western Training area",
+          "options": [
+            "Holding point B4, runway 21R, TGE",
+            "Cross threshold runway 26R, holding point B4, runway 21R, TGE",
+            "Threshold runway 26R, holding point B4 runway 21R, TGE",
+            "Enter threshold runway 26R, B4, runway 21R, TGE"
+          ]
+        },
+        {
+          "id": 2,
+          "question": "LIE has called from runup bay F, for a flight to the western Training area",
+          "options": [
+            "Holding point A5, 21R, LIE",
+            "A5, runway 21R, LIE",
+            "Holding point B5, runway 21R, LIE",
+            "Holding point A5, runway 21R, LIE"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "The pilot of YKB wants to return to FTA Apron after landing on 21 Right",
+          "options": [
+            "Cross undershoots runways 26L and R, FTA apron, YKB",
+            "Cross undershoot runway 26L, FTA apron, YKB",
+            "Cross thresholds runways 26L and R, FTA apron, YKB",
+            "Cross undershoots runways 26R and L, FTA apron, YKB"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "YTV has called at the Runup bay J for circuits",
+          "options": [
+            "Holding point F, runway 21L, YTV",
+            "Give way to the Twinstar, holding point F, 21L, YTV",
+            "Give way to the Twinstar, holding point F, runway 21L, YTV",
+            "Runup bay J, holding point F, runway 21L, YTV"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Where is the traffic, YTV has to give way to?",
+          "options": [
+            "Inbound to apron",
+            "Runup bay J",
+            "Inbound to runup bay J",
+            "Final"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "The pilot of USP wants to return to the southern apron after landing on 21 Right.",
+          "options": [
+            "Cross undershoot runway 26L, cross threshold runway 26R, USP",
+            "Cross undershoot runway 26L, cross threshold runway 26R, FTA apron, USP",
+            "Cross undershoot runway 26R and threshold runway 26R, USP",
+            "Cross threshold runway 26R, cross undershoot runway 26L, USP"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "The pilot of YBU has called at the Runup bay J for a flight to the western Training area",
+          "options": [
+            "Give way to the Grob, enter holding point B5, runway 21R, YBU",
+            "Give way to the Grob, cross undershoot runway 26R, holding point B5, runway 21R, YBU",
+            "Give way to the Grob, enter undershoot runway 26R, holding point B5, runway 21R, YBU",
+            "Enter undershoot runway 26R, holding point B5, runway 21R, YBU"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "What is the colour and type of the traffic YBU has to follow?",
+          "options": [
+            "Yellow and white Grob",
+            "Yellow and white Cessna",
+            "White Cessna",
+            "Yellow Grob"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionName": "SECTION TWO: THE READY",
+      "marks": 9,
+      "description": "In this section the Tower controller is answering 'Ready' calls. Listen to the call and choose the response you would give.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "You are the pilot of YTC and are at the 03R hold point for a flight...",
+          "options": [
+            "Runway 03R, cleared for take off, YTC",
+            "Cleared for take off, runway 03R, YTC",
+            "Follow the traffic, 03R, cleared for take off, YTC",
+            "Cleared for take off, YTC"
+          ]
+        },
+        {
+          "id": 2,
+          "question": "What is the traffic?",
+          "options": [
+            "A Tomahawk",
+            "A Grob",
+            "A Cessna",
+            "A Tobago"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Where is the traffic?",
+          "options": [
+            "Final",
+            "Upwind",
+            "Just airborne",
+            "Base"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "What is the traffic's intention?",
+          "options": [
+            "Inbound",
+            "Departing via Substation",
+            "Touch and go",
+            "Circuits"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "You are the pilot of Tango Golf November and are at the 03L hold point.",
+          "options": [
+            "Behind the Cessna lining up, TGN",
+            "Lining up behind the Cessna, TGN",
+            "Traffic in sight, lining up, TGN",
+            "Behind the Cessna, lining up behind, TGN"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "You are the pilot of Juliet Echo Sierra, and are at the 21R hold point.",
+          "options": [
+            "Lining up for rolling start, JES",
+            "Runway 21R, lining up for rolling start, JES",
+            "Runway 21R, lining up, JES",
+            "Runway 21R, lining up, keep it rolling, JES"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "You are the pilot of YTO and are at the 21L hold point and have requested a delay on the runway.",
+          "options": [
+            "Lining up, delay approved, 10 seconds, YTO",
+            "Delay approved no longer than 10 seconds, lining up, YTO",
+            "Delay for 10 seconds, lining up, YTO",
+            "Lining up, YTO"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "You are the pilot of Yankee Tango Whisky and are at the 26L hold point.",
+          "options": [
+            "Maintain runway heading, runway 26L, cleared for takeoff, YTW",
+            "Maintain runway heading, cleared for takeoff, YTW",
+            "Runway 26L, cleared for takeoff, YTW",
+            "Cleared for takeoff, runway 26 left, maintain runway heading, YTW"
+          ]
+        },
+        {
+          "id": 9,
+          "question": "You are the pilot of YTC and are at the 03R hold point.",
+          "options": [
+            "Hold position, YTC",
+            "Holding, YTC",
+            "YTC",
+            "YTC, wilco"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionName": "SECTION THREE: THE DOWNWIND CALL",
+      "marks": 6,
+      "description": "In this section the Tower Controller is answering 'Downwind' calls. The pilots are making their downwind call turning downwind. Select the letter of the diagram which best explains the instruction. (Diagram-based section - visual matching required with audio)"
+    },
+    {
+      "sectionName": "SECTION FOUR: TRAFFIC CALLS IN THE CIRCUIT OR ON APPROACH",
+      "marks": 8,
+      "description": "In this section the Tower Controller is giving traffic information. Choose the response you would give and select the letter of the diagram which best explains the instruction.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "You are the pilot of YTC.",
+          "options": [
+            "YTC",
+            "Cleared visual approach, YTC",
+            "Visual approach, YTC",
+            "Traffic in sight, cleared to land, YTC"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionName": "SECTION FIVE: RUNWAY CHANGES",
+      "marks": 6,
+      "description": "In this section the Tower Controller is giving an aircraft an instruction for a change of runway. Choose the response you would give and select the letter of the diagram which best explains the instruction.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "You are the pilot of Yankee Tango Bravo. You are inbound from the Training Area for circuit practice and are on base for 03L when you receive this call.",
+          "options": [
+            "Runway 03L, cleared touch and go, right circuits runway 03R, YTB.",
+            "Runway 03L cleared touch and go, right turn right circuits, runway 03R, YTB.",
+            "Cleared touch and go, right turn for runway R, right circuits, YTB.",
+            "Cleared touch and go, right turn for runway 03R, right circuits, YTB."
+          ]
+        },
+        {
+          "id": 3,
+          "question": "You are the pilot of Tango Golf Alpha. You have been doing circuits on 03R and have requested a Full stop landing, when you receive this call.",
+          "options": [
+            "Through final for runway 03L, cleared to land, TGA",
+            "Through final runway 03L, cleared to land, TGA",
+            "Runway 03L cleared to land, roll through, TGA",
+            "Through final for runway 03L cleared to land, roll through, TGA"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "You are the pilot of Yankee Tango Bravo. You are doing circuits on 21L and are on the base leg, when you receive this call.",
+          "options": [
+            "When ready, right crosswind runway 03R, YTB",
+            "When ready, make right turn for change of runway 03R, YTB",
+            "When ready, right turn, runway 03R, YTB",
+            "When ready, right turn, right crosswind, runway 03R, YTB"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionName": "SECTION SIX: APPROACH INSTRUCTIONS",
+      "marks": 8,
+      "description": "In this section the Tower Controller is telling approaching aircraft where to join the circuit. Choose the response you would give and select the letter of the diagram which best explains the instruction.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Yankee Tango Whisky is inbound from the Training area. The Duty runway is Runway 21.",
+          "options": [
+            "Cleared visual approach, track for right base, YTW",
+            "Direct right base, YTW",
+            "Cleared visual approach, direct right base, YTW",
+            "Direct right base, number 2, YTW"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Yankee Tango India has been told to join base for runway 03 left. The Duty runway is Runway 03.",
+          "options": [
+            "Visual approach, mid downwind, YTI",
+            "Cleared visual approach, YTI",
+            "YTI, visual approach",
+            "Cleared visual approach, number 2, YTI"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Yankee Tango Kilo is inbound from Outer Harbor. The Duty runway is Runway 21.",
+          "options": [
+            "Follow the Tobago, mid downwind runway 21R, maintain 1500, YTK",
+            "Mid downwind runway 21R, maintain 1500, YTK",
+            "Maintain 1500, direct mid downwind runway 21R, YTK",
+            "Maintain 1500, downwind runway 21R, YTK"
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Juliet Victor Sierra is inbound from Outer Harbor.",
+          "options": [
+            "Maintain 1500, downwind runway 26R, JVS",
+            "Maintain 1500, direct downwind runway 26R, JVS",
+            "Mid downwind runway 26R, wilco, JVS",
+            "Maintain 1500, runway 26R, JVS"
+          ]
+        }
+      ]
+    },
+    {
+      "sectionName": "SECTION SEVEN: OTHER CALLS IN THE CIRCUIT OR ON APPROACH",
+      "marks": 10,
+      "description": "In this section the Tower Controller is either giving instructions or requesting information. Listen and choose the response you would give.",
+      "questions": [
+        {
+          "id": 1,
+          "question": "TAN is inbound for 03L when the pilot receives this call.",
+          "options": [
+            "TAN, wilco",
+            "Report approaching wide left base, TAN",
+            "Report wide left base, TAN",
+            "TAN, roger, wide left base."
+          ]
+        },
+        {
+          "id": 2,
+          "question": "KTB is on the downwind leg for 21R, when the pilot receives this call.",
+          "options": [
+            "Request close base, runway 21R, KTB",
+            "Close base, runway 21 right, KTB",
+            "Base, runway 21 right, KTB",
+            "KTB, wilco"
+          ]
+        },
+        {
+          "id": 3,
+          "question": "KTB is on the downwind leg for 21R, when the pilot receives this call.",
+          "options": [
+            "Wilco, KTB",
+            "Remain downwind, wilco KTB",
+            "Report ready to turn base, KTB",
+            "KTB, ready to turn base"
+          ]
+        },
+        {
+          "id": 4,
+          "question": "BEG has been instructed to continue downwind, when the pilot receives this call.",
+          "options": [
+            "BEG, wilco",
+            "Request an early base turn, BEG",
+            "BEG",
+            "Early base turn, BEG"
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Parafield Ground is calling TGX - a taxiing aircraft.",
+          "options": [
+            "TGX, wilco",
+            "TGX, 2 POB",
+            "TGX, roger",
+            "On taxiway B, TGX"
+          ]
+        },
+        {
+          "id": 6,
+          "question": "YTQ is outbound to the Training area.",
+          "options": [
+            "YTQ, maintaining 1500",
+            "YTQ, wilco",
+            "YTQ, affirm",
+            "YTQ, approaching the saltpans."
+          ]
+        },
+        {
+          "id": 7,
+          "question": "YTB is inbound and has requested circuits.",
+          "options": [
+            "YTB, 10 second delay.",
+            "YTB, 2 circuits",
+            "YTB, negative for the training area",
+            "YTB, 21 left"
+          ]
+        },
+        {
+          "id": 8,
+          "question": "YTF has called ready for a flight to the Western training area.",
+          "options": [
+            "YTF, roger",
+            "YTF, wilco",
+            "YTF, affirm",
+            "YTF"
+          ]
+        },
+        {
+          "id": 9,
+          "question": "YTO has reported at Outer Harbor and is inbound.",
+          "options": [
+            "YTO, 4 circuits",
+            "YTO, 1500",
+            "YTO, Outer Harbor",
+            "YTO, traffic in sight."
+          ]
+        },
+        {
+          "id": 10,
+          "question": "JAZ is departing the circuit for the Training area.",
+          "options": [
+            "JAZ, prefer circuits",
+            "JAZ, affirm, traffic in sight",
+            "JAZ, negative traffic in sight",
+            "JAZ, dual"
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": {
+    "important": "Because this is an aviation listening comprehension test, the correct answers depend entirely on the accompanying audio tracks. Since the audio is not provided, the correct answers cannot be definitively determined.",
+    "sections3and4": "Sections 3 and 4 require diagram-based visual matching which is not included in this transcription.",
+    "audioRequired": "Audio tracks are essential for completing this test accurately."
+  }
+}
