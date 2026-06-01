@@ -122,7 +122,7 @@
             color: #333;
         }
 
-        .option:hover {
+        .option:hover:not(.disabled) {
             border-color: #667eea;
             background: #f0f4ff;
         }
@@ -137,12 +137,43 @@
             border-color: #28a745;
             background: #d4edda;
             color: #155724;
+            font-weight: 600;
         }
 
         .option.incorrect {
             border-color: #dc3545;
             background: #f8d7da;
             color: #721c24;
+            font-weight: 600;
+        }
+
+        .option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .feedback-message {
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .feedback-message.show {
+            display: block;
+        }
+
+        .feedback-correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .feedback-incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #dc3545;
         }
 
         .controls {
@@ -270,7 +301,7 @@
     <div class="container">
         <div class="header">
             <h1>ICAO V2 Multichoice Pre-Solo Listening Test 5</h1>
-            <p>Interactive Test Runner</p>
+            <p>Interactive Test Runner with Answer Feedback</p>
         </div>
 
         <div class="error-message" id="errorMessage"></div>
@@ -278,7 +309,7 @@
         <div class="progress-container">
             <div class="progress-info">
                 <span>Progress: <span id="currentQuestion">0</span>/<span id="totalQuestions">0</span></span>
-                <span>Score: <span id="scoreDisplay">0</span> marks</span>
+                <span>Score: <span id="scoreDisplay">0</span>/<span id="totalMarks">0</span></span>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -301,6 +332,7 @@
         let allQuestions = [];
         let userAnswers = {};
         let testSubmitted = false;
+        let answeredCorrectly = {};
 
         // Load test data
         async function loadTest() {
@@ -325,12 +357,17 @@
                         ...question,
                         sectionName: section.sectionName,
                         sectionIndex: sectionIndex,
-                        marks: section.marks / section.questions.length
+                        marks: section.marks / section.questions.length,
+                        correctAnswer: question.correctAnswer !== undefined ? question.correctAnswer : 0
                     });
                 });
             });
 
             document.getElementById('totalQuestions').textContent = allQuestions.length;
+            
+            // Calculate total marks
+            const totalMarks = allQuestions.reduce((sum, q) => sum + q.marks, 0);
+            document.getElementById('totalMarks').textContent = totalMarks.toFixed(1);
         }
 
         function displayQuestion() {
@@ -355,24 +392,45 @@
 
             question.options.forEach((option, index) => {
                 const isSelected = userAnswers[currentQuestion] === index;
+                const isCorrect = index === question.correctAnswer;
                 const classes = ['option'];
                 
-                if (isSelected) classes.push('selected');
-                
-                if (testSubmitted) {
-                    if (index === userAnswers[currentQuestion]) {
-                        classes.push('selected');
+                if (isSelected) {
+                    classes.push('selected');
+                    if (answeredCorrectly[currentQuestion] === true) {
+                        classes.push('correct');
+                    } else if (answeredCorrectly[currentQuestion] === false) {
+                        classes.push('incorrect');
                     }
                 }
+                
+                if (answeredCorrectly[currentQuestion] !== undefined && isCorrect && !isSelected) {
+                    classes.push('correct');
+                }
+
+                const isDisabled = answeredCorrectly[currentQuestion] !== undefined;
 
                 html += `
-                    <div class="option ${classes.join(' ')}" onclick="selectOption(${index})">
+                    <div class="option ${classes.join(' ')} ${isDisabled ? 'disabled' : ''}" onclick="selectOption(${index})">
                         <strong>${String.fromCharCode(65 + index)}.</strong> ${option}
                     </div>
                 `;
             });
 
-            html += `</div></div>`;
+            html += `</div>`;
+
+            // Add feedback message if answered
+            if (answeredCorrectly[currentQuestion] !== undefined) {
+                const isCorrect = answeredCorrectly[currentQuestion];
+                const feedbackClass = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
+                const feedbackText = isCorrect ? 
+                    '✓ Correct!' : 
+                    `✗ Incorrect! The correct answer is: ${String.fromCharCode(65 + question.correctAnswer)}`;
+                
+                html += `<div class="feedback-message show ${feedbackClass}">${feedbackText}</div>`;
+            }
+
+            html += `</div>`;
 
             content.innerHTML = html;
             updateProgress();
@@ -380,9 +438,22 @@
         }
 
         function selectOption(index) {
-            if (testSubmitted) return;
+            if (answeredCorrectly[currentQuestion] !== undefined) return;
             
+            const question = allQuestions[currentQuestion];
             userAnswers[currentQuestion] = index;
+            
+            // Check if correct
+            const isCorrect = index === question.correctAnswer;
+            answeredCorrectly[currentQuestion] = isCorrect;
+            
+            // Calculate score
+            if (isCorrect) {
+                const currentScore = parseFloat(document.getElementById('scoreDisplay').textContent) || 0;
+                const newScore = currentScore + question.marks;
+                document.getElementById('scoreDisplay').textContent = newScore.toFixed(1);
+            }
+            
             displayQuestion();
         }
 
@@ -402,7 +473,6 @@
 
         function updateProgress() {
             const total = allQuestions.length;
-            const answered = Object.keys(userAnswers).length;
             const percentage = (currentQuestion + 1) / total * 100;
 
             document.getElementById('currentQuestion').textContent = currentQuestion + 1;
@@ -430,29 +500,8 @@
             document.getElementById('submitBtn').style.display = 'none';
             document.getElementById('restartBtn').style.display = 'inline-block';
 
-            // Calculate score (placeholder - audio answers not available)
-            calculateScore();
-            
             // Show summary
             showSummary();
-        }
-
-        function calculateScore() {
-            let totalMarks = 0;
-            let marksEarned = 0;
-
-            allQuestions.forEach((question, index) => {
-                const totalMark = question.marks || 1;
-                totalMarks += totalMark;
-
-                // Note: Actual scoring requires audio verification
-                // This is a placeholder
-            });
-
-            // Store score in session
-            sessionStorage.setItem('testScore', marksEarned);
-            sessionStorage.setItem('testTotal', totalMarks);
-            sessionStorage.setItem('testAnswered', Object.keys(userAnswers).length);
         }
 
         function showSummary() {
@@ -460,15 +509,17 @@
             const answered = Object.keys(userAnswers).length;
             const total = allQuestions.length;
             const percentage = (answered / total * 100).toFixed(1);
+            const finalScore = parseFloat(document.getElementById('scoreDisplay').textContent) || 0;
+            const totalMarks = parseFloat(document.getElementById('totalMarks').textContent) || 0;
 
             let html = `
                 <div class="summary show">
-                    <h2>Test Summary</h2>
-                    <div class="score-percentage">Questions Answered: ${answered} / ${total}</div>
-                    <div class="score-percentage">${percentage}%</div>
+                    <h2>Test Complete!</h2>
+                    <div class="score-display">${finalScore.toFixed(1)} / ${totalMarks.toFixed(1)}</div>
+                    <div class="score-percentage">Accuracy: ${percentage}%</div>
                     
                     <div style="text-align: left; margin-top: 30px;">
-                        <h3 style="margin-bottom: 15px;">Your Answers:</h3>
+                        <h3 style="margin-bottom: 15px;">Review Your Answers:</h3>
             `;
 
             let currentSection = '';
@@ -482,19 +533,23 @@
                 }
 
                 const selected = userAnswers[index] !== undefined;
+                const isCorrect = answeredCorrectly[index];
+                const statusIcon = isCorrect === true ? '✓' : (isCorrect === false ? '✗' : '○');
+                const statusText = isCorrect === true ? 'Correct' : (isCorrect === false ? 'Incorrect' : 'Not answered');
+                
                 const selectedText = selected ? 
                     `${String.fromCharCode(65 + userAnswers[index])}. ${question.options[userAnswers[index]]}` :
                     'Not answered';
 
                 html += `
                     <div style="margin: 8px 0; padding: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px;">
-                        <strong>Q${index + 1}:</strong> ${selectedText}
+                        <strong>Q${index + 1} [${statusIcon} ${statusText}]:</strong> ${selectedText}
                     </div>
                 `;
             });
 
             html += `</div></div>
-                    <p style="margin-top: 20px; font-size: 14px;">Note: Actual scoring requires audio verification and listening comprehension evaluation.</p>
+                    <p style="margin-top: 20px; font-size: 14px;">Click "Restart Test" to try again.</p>
                 </div>
             `;
 
@@ -505,8 +560,10 @@
         function restartTest() {
             currentQuestion = 0;
             userAnswers = {};
+            answeredCorrectly = {};
             testSubmitted = false;
             
+            document.getElementById('scoreDisplay').textContent = '0';
             document.getElementById('prevBtn').style.display = 'inline-block';
             document.getElementById('restartBtn').style.display = 'none';
             
