@@ -247,18 +247,42 @@
             margin-bottom: 20px;
         }
 
-        .section-score {
+        .review-section {
             text-align: left;
             background: rgba(255, 255, 255, 0.1);
             padding: 15px;
             border-radius: 6px;
-            margin: 10px 0;
+            margin: 15px 0;
             font-size: 14px;
         }
 
-        .section-score strong {
+        .review-section strong {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .review-answer {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .status-correct {
+            color: #90EE90;
+            font-weight: bold;
+        }
+
+        .status-incorrect {
+            color: #FFB6C6;
+            font-weight: bold;
+        }
+
+        .status-unanswered {
+            color: #FFE4B5;
+            font-weight: bold;
         }
 
         .hidden {
@@ -529,21 +553,30 @@
                         html += '</div>';
                     }
                     currentSection = question.sectionName;
-                    html += `<div class="section-score"><strong>${currentSection}</strong>`;
+                    html += `<div class="review-section"><strong>${currentSection}</strong>`;
                 }
 
                 const selected = userAnswers[index] !== undefined;
                 const isCorrect = answeredCorrectly[index];
-                const statusIcon = isCorrect === true ? '✓' : (isCorrect === false ? '✗' : '○');
-                const statusText = isCorrect === true ? 'Correct' : (isCorrect === false ? 'Incorrect' : 'Not answered');
+                let statusClass = 'status-unanswered';
+                let statusText = '○ Not answered';
+
+                if (isCorrect === true) {
+                    statusClass = 'status-correct';
+                    statusText = '✓ Correct';
+                } else if (isCorrect === false) {
+                    statusClass = 'status-incorrect';
+                    statusText = '✗ Incorrect';
+                }
                 
                 const selectedText = selected ? 
                     `${String.fromCharCode(65 + userAnswers[index])}. ${question.options[userAnswers[index]]}` :
                     'Not answered';
 
                 html += `
-                    <div style="margin: 8px 0; padding: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px;">
-                        <strong>Q${index + 1} [${statusIcon} ${statusText}]:</strong> ${selectedText}
+                    <div class="review-answer">
+                        <strong>Q${index + 1}: <span class="${statusClass}">${statusText}</span></strong><br>
+                        Your answer: ${selectedText}
                     </div>
                 `;
             });
