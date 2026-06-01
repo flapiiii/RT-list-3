@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICAO V2 Pre-Solo Listening Test 5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .question-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8edf7;
+            font-weight: 600;
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #5a6268;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .summary {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .summary.show {
+            display: block;
+        }
+
+        .summary h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .score-display {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .score-percentage {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .section-score {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .section-score strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ICAO V2 Multichoice Pre-Solo Listening Test 5</h1>
+            <p>Interactive Test Runner</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Progress: <span id="currentQuestion">0</span>/<span id="totalQuestions">0</span></span>
+                <span>Score: <span id="scoreDisplay">0</span> marks</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="testContent"></div>
+
+        <div class="controls">
+            <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+            <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+            <button class="btn-primary" id="submitBtn" onclick="submitTest()" style="display: none;">Submit Test</button>
+            <button class="btn-secondary" id="restartBtn" onclick="restartTest()" style="display: none;">Restart Test</button>
+        </div>
+    </div>
+
+    <script>
+        let testData = null;
+        let currentQuestion = 0;
+        let allQuestions = [];
+        let userAnswers = {};
+        let testSubmitted = false;
+
+        // Load test data
+        async function loadTest() {
+            try {
+                const response = await fetch('ICAO_V2_PreSolo_ListeningTest_5.json');
+                testData = await response.json();
+                prepareQuestions();
+                displayQuestion();
+                updateProgress();
+            } catch (error) {
+                showError('Failed to load test data: ' + error.message);
+            }
+        }
+
+        function prepareQuestions() {
+            allQuestions = [];
+            const sectionQuestions = testData.sections.filter(s => s.questions);
+            
+            sectionQuestions.forEach((section, sectionIndex) => {
+                section.questions.forEach((question, questionIndex) => {
+                    allQuestions.push({
+                        ...question,
+                        sectionName: section.sectionName,
+                        sectionIndex: sectionIndex,
+                        marks: section.marks / section.questions.length
+                    });
+                });
+            });
+
+            document.getElementById('totalQuestions').textContent = allQuestions.length;
+        }
+
+        function displayQuestion() {
+            if (allQuestions.length === 0) return;
+
+            const question = allQuestions[currentQuestion];
+            const content = document.getElementById('testContent');
+            
+            let html = '';
+
+            // Add section title if it's a new section
+            if (currentQuestion === 0 || allQuestions[currentQuestion - 1].sectionIndex !== question.sectionIndex) {
+                html += `<div class="section-title">${question.sectionName}</div>`;
+            }
+
+            html += `
+                <div class="question-container">
+                    <div class="question-number">Question ${currentQuestion + 1} of ${allQuestions.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+            `;
+
+            question.options.forEach((option, index) => {
+                const isSelected = userAnswers[currentQuestion] === index;
+                const classes = ['option'];
+                
+                if (isSelected) classes.push('selected');
+                
+                if (testSubmitted) {
+                    if (index === userAnswers[currentQuestion]) {
+                        classes.push('selected');
+                    }
+                }
+
+                html += `
+                    <div class="option ${classes.join(' ')}" onclick="selectOption(${index})">
+                        <strong>${String.fromCharCode(65 + index)}.</strong> ${option}
+                    </div>
+                `;
+            });
+
+            html += `</div></div>`;
+
+            content.innerHTML = html;
+            updateProgress();
+            updateButtons();
+        }
+
+        function selectOption(index) {
+            if (testSubmitted) return;
+            
+            userAnswers[currentQuestion] = index;
+            displayQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < allQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const total = allQuestions.length;
+            const answered = Object.keys(userAnswers).length;
+            const percentage = (currentQuestion + 1) / total * 100;
+
+            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+
+        function updateButtons() {
+            const total = allQuestions.length;
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = currentQuestion === total - 1;
+            
+            if (currentQuestion === total - 1) {
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('submitBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('nextBtn').style.display = 'inline-block';
+                document.getElementById('submitBtn').style.display = 'none';
+            }
+        }
+
+        function submitTest() {
+            testSubmitted = true;
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('restartBtn').style.display = 'inline-block';
+
+            // Calculate score (placeholder - audio answers not available)
+            calculateScore();
+            
+            // Show summary
+            showSummary();
+        }
+
+        function calculateScore() {
+            let totalMarks = 0;
+            let marksEarned = 0;
+
+            allQuestions.forEach((question, index) => {
+                const totalMark = question.marks || 1;
+                totalMarks += totalMark;
+
+                // Note: Actual scoring requires audio verification
+                // This is a placeholder
+            });
+
+            // Store score in session
+            sessionStorage.setItem('testScore', marksEarned);
+            sessionStorage.setItem('testTotal', totalMarks);
+            sessionStorage.setItem('testAnswered', Object.keys(userAnswers).length);
+        }
+
+        function showSummary() {
+            const content = document.getElementById('testContent');
+            const answered = Object.keys(userAnswers).length;
+            const total = allQuestions.length;
+            const percentage = (answered / total * 100).toFixed(1);
+
+            let html = `
+                <div class="summary show">
+                    <h2>Test Summary</h2>
+                    <div class="score-percentage">Questions Answered: ${answered} / ${total}</div>
+                    <div class="score-percentage">${percentage}%</div>
+                    
+                    <div style="text-align: left; margin-top: 30px;">
+                        <h3 style="margin-bottom: 15px;">Your Answers:</h3>
+            `;
+
+            let currentSection = '';
+            allQuestions.forEach((question, index) => {
+                if (question.sectionName !== currentSection) {
+                    if (currentSection !== '') {
+                        html += '</div>';
+                    }
+                    currentSection = question.sectionName;
+                    html += `<div class="section-score"><strong>${currentSection}</strong>`;
+                }
+
+                const selected = userAnswers[index] !== undefined;
+                const selectedText = selected ? 
+                    `${String.fromCharCode(65 + userAnswers[index])}. ${question.options[userAnswers[index]]}` :
+                    'Not answered';
+
+                html += `
+                    <div style="margin: 8px 0; padding: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px;">
+                        <strong>Q${index + 1}:</strong> ${selectedText}
+                    </div>
+                `;
+            });
+
+            html += `</div></div>
+                    <p style="margin-top: 20px; font-size: 14px;">Note: Actual scoring requires audio verification and listening comprehension evaluation.</p>
+                </div>
+            `;
+
+            content.innerHTML = html;
+            document.getElementById('progressFill').style.width = '100%';
+        }
+
+        function restartTest() {
+            currentQuestion = 0;
+            userAnswers = {};
+            testSubmitted = false;
+            
+            document.getElementById('prevBtn').style.display = 'inline-block';
+            document.getElementById('restartBtn').style.display = 'none';
+            
+            displayQuestion();
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        }
+
+        // Initialize
+        loadTest();
+    </script>
+</body>
+</html>
