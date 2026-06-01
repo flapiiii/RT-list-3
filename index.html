@@ -361,13 +361,15 @@
         // Load test data
         async function loadTest() {
             try {
-                const response = await fetch('ICAO_V2_PreSolo_ListeningTest_5.json');
+                const response = await fetch('ICAO_V2_PreSolo_ListeningTest_5.json?t=' + Date.now());
                 testData = await response.json();
+                console.log('Test data loaded:', testData);
                 prepareQuestions();
                 displayQuestion();
                 updateProgress();
             } catch (error) {
                 showError('Failed to load test data: ' + error.message);
+                console.error('Error:', error);
             }
         }
 
@@ -377,12 +379,14 @@
             
             sectionQuestions.forEach((section, sectionIndex) => {
                 section.questions.forEach((question, questionIndex) => {
+                    const correctAnswer = question.correctAnswer !== undefined ? question.correctAnswer : 0;
+                    console.log(`Q${allQuestions.length + 1}: Correct Answer = ${correctAnswer}`);
                     allQuestions.push({
                         ...question,
                         sectionName: section.sectionName,
                         sectionIndex: sectionIndex,
                         marks: section.marks / section.questions.length,
-                        correctAnswer: question.correctAnswer !== undefined ? question.correctAnswer : 0
+                        correctAnswer: correctAnswer
                     });
                 });
             });
@@ -400,6 +404,8 @@
             const question = allQuestions[currentQuestion];
             const content = document.getElementById('testContent');
             
+            console.log(`Displaying Q${currentQuestion + 1}, correct answer index: ${question.correctAnswer}`);
+            
             let html = '';
 
             // Add section title if it's a new section
@@ -416,7 +422,7 @@
 
             question.options.forEach((option, index) => {
                 const isSelected = userAnswers[currentQuestion] === index;
-                const isCorrect = index === question.correctAnswer;
+                const isCorrectAnswer = index === question.correctAnswer;
                 const classes = ['option'];
                 
                 if (isSelected) {
@@ -428,7 +434,8 @@
                     }
                 }
                 
-                if (answeredCorrectly[currentQuestion] !== undefined && isCorrect && !isSelected) {
+                // Show correct answer if answered incorrectly
+                if (answeredCorrectly[currentQuestion] !== undefined && isCorrectAnswer && !isSelected) {
                     classes.push('correct');
                 }
 
@@ -447,9 +454,10 @@
             if (answeredCorrectly[currentQuestion] !== undefined) {
                 const isCorrect = answeredCorrectly[currentQuestion];
                 const feedbackClass = isCorrect ? 'feedback-correct' : 'feedback-incorrect';
+                const correctAnswerLetter = String.fromCharCode(65 + question.correctAnswer);
                 const feedbackText = isCorrect ? 
                     '✓ Correct!' : 
-                    `✗ Incorrect! The correct answer is: ${String.fromCharCode(65 + question.correctAnswer)}`;
+                    `✗ Incorrect! The correct answer is ${correctAnswerLetter}.`;
                 
                 html += `<div class="feedback-message show ${feedbackClass}">${feedbackText}</div>`;
             }
@@ -470,6 +478,8 @@
             // Check if correct
             const isCorrect = index === question.correctAnswer;
             answeredCorrectly[currentQuestion] = isCorrect;
+            
+            console.log(`Selected answer ${index}, correct is ${question.correctAnswer}, is correct: ${isCorrect}`);
             
             // Calculate score
             if (isCorrect) {
